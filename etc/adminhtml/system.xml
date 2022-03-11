@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="spam_blocker" translate="label" type="text" sortOrder="105" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Spam Blocker</label>
+            <tab>magtools</tab>
+            <resource>Mtools_SpamBlocker::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="banned_scripts" translate="label" type="multiselect" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banned UTF-8 Script Encodings</label>
+                    <comment>Selected script encondigns will be blocked by spam detector.</comment>
+                    <source_model>Mtools\SpamBlocker\Model\Config\Source\Scripts</source_model>
+                </field>
+
+                <field id="banned_list" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banned Text</label>
+                    <comment>One string per line, this will match text entered in name and lastname.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
