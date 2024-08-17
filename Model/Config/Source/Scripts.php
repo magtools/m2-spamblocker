@@ -2,8 +2,7 @@
 
 namespace Mtools\SpamBlocker\Model\Config\Source;
 
-class Scripts
-    implements \Magento\Framework\Data\OptionSourceInterface
+class Scripts implements \Magento\Framework\Data\OptionSourceInterface
 {
 
     /**
@@ -19,8 +18,8 @@ class Scripts
      */
     public function getAllOptions()
     {
-        $options = array();
-        $scripts = array(
+        $options = [];
+        $scripts = [
             '/\p{Common}+/u' => 'Common',
             '/\p{Arabic}+/u' => 'Arabic',
             '/\p{Armenian}+/u' => 'Armenian',
@@ -66,13 +65,13 @@ class Scripts
             '/\p{Thai}+/u' => 'Thai',
             '/\p{Tibetan}+/u' => 'Tibetan',
             '/\p{Yi}+/u' => 'Yi',
-        );
+        ];
 
         foreach ($scripts as $value => $label) {
-            $options[] = array(
+            $options[] = [
                 'value' => $value,
                 'label' => $label,
-            );
+            ];
         }
 
         return $options;

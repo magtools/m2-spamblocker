@@ -49,8 +49,8 @@ class CreatePostPlugin
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\UrlFactory $urlFactory)
-    {
+        \Magento\Framework\UrlFactory $urlFactory
+    ) {
         $this->messageManager = $context->getMessageManager();
         $this->resultRedirectFactory = $context->getResultRedirectFactory();
         $this->request = $context->getRequest();
@@ -112,7 +112,7 @@ class CreatePostPlugin
         foreach ($bannedList as $bannedString) {
             if (!empty($bannedString)) {
                 $bannedString = strtolower($bannedString);
-                if (strpos($firstname.$lastname,$bannedString) !== false) {
+                if (strpos($firstname.$lastname, $bannedString) !== false) {
                     return true;
                 }
             }
