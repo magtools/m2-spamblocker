@@ -4,18 +4,18 @@ namespace Mtools\SpamBlocker\Plugin;
 
 use \Mtools\SpamBlocker\Plugin\AbstractPlugin;
 use \Magento\Framework\Controller\Result\Redirect;
-use \Magento\Customer\Controller\Account\CreatePost;
+use \Magento\Customer\Controller\Address\FormPost;
 use \Closure;
 
-class CreatePostPlugin extends AbstractPlugin
+class AddressPostPlugin extends AbstractPlugin
 {
     /**
-     * @param CreatePost $subject
-     * @param Closure    $proceed
+     * @param FormPost $subject
+     * @param Closure  $proceed
      *
      * @return Redirect|mixed
      */
-    public function aroundExecute(CreatePost $subject, Closure $proceed)
+    public function aroundExecute(FormPost $subject, Closure $proceed)
     {
         $message = __('Plugin.');
 
@@ -24,10 +24,10 @@ class CreatePostPlugin extends AbstractPlugin
             return $proceed();
         }
 
-        $message = __('There is already an account with this email address. If you are sure that it is your email address.');
+        $message = __('Something went wrong. Please, try again later');
         $this->messageManager->addError($message);
 
-        $defaultUrl = $this->urlModel->getUrl('*/*/create', ['_secure' => true]);
+        $defaultUrl = $this->urlModel->getUrl('*/*/*', ['_secure' => true]);
         $resultRedirect = $this->resultRedirectFactory->create();
         $resultRedirect->setUrl($this->redirect->error($defaultUrl));
         return $resultRedirect;
@@ -40,9 +40,15 @@ class CreatePostPlugin extends AbstractPlugin
     {
         $firstname = $this->request->getParam('firstname', false);
         $lastname = $this->request->getParam('lastname', false);
+        $telephone = $this->request->getParam('telephone', false);
+        $city = $this->request->getParam('city', false);
+        $address = $this->request->getParam('street', false);
         $firstname = strtolower($firstname);
         $lastname = strtolower($lastname);
+        $telephone = strtolower($telephone);
+        $city = strtolower($city);
+        $address = strtolower($address[0]);
 
-        return $firstname.$lastname;
+        return $firstname.$lastname.$telephone.$city.$address;
     }
 }

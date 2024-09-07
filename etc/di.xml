@@ -5,4 +5,12 @@
         <plugin name="MtoolsSpamBlockerControllerCreatePost"
                 type="Mtools\SpamBlocker\Plugin\CreatePostPlugin" sortOrder="0"/>
     </type>
+    <type name="Magento\Customer\Controller\Address\FormPost">
+        <plugin name="MtoolsSpamBlockerControllerAddressPost"
+                type="Mtools\SpamBlocker\Plugin\AddressPostPlugin" sortOrder="0"/>
+    </type>
+    <type name="Magento\Quote\Model\ShippingMethodManagement">
+        <plugin name="MtoolsSpamBlockerControllerShippingBlocked"
+                type="Mtools\SpamBlocker\Plugin\ShippingMethodManagement" disabled="false"/>
+    </type>
 </config>

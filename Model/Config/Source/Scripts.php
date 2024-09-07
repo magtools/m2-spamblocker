@@ -76,5 +76,4 @@ class Scripts implements \Magento\Framework\Data\OptionSourceInterface
 
         return $options;
     }
-
 }
