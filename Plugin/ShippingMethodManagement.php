@@ -103,11 +103,11 @@ class ShippingMethodManagement extends AbstractPlugin
         $telephone = $shipping_info->getTelephone();
         $city = $shipping_info->getCity();
         $address = $shipping_info->getStreet();
-        $firstname = strtolower($firstname);
-        $lastname = strtolower($lastname);
-        $telephone = strtolower($telephone);
-        $city = strtolower($city);
-        $address = strtolower($address[0]);
+        $firstname = strtolower(!empty($firstname)?$firstname:'');
+        $lastname = strtolower(!empty($lastname)?$lastname:'');
+        $telephone = strtolower(!empty($telephone)?$telephone:'');
+        $city = strtolower(!empty($city)?$city:'');
+        $address = strtolower(!empty($address[0])?$address[0]:'');
 
         return $firstname.$lastname.$telephone.$city.$address;
     }

@@ -40,8 +40,8 @@ class CreatePostPlugin extends AbstractPlugin
     {
         $firstname = $this->request->getParam('firstname', false);
         $lastname = $this->request->getParam('lastname', false);
-        $firstname = strtolower($firstname);
-        $lastname = strtolower($lastname);
+        $firstname = strtolower(!empty($firstname)?$firstname:'');
+        $lastname = strtolower(!empty($lastname)?$lastname:'');
 
         return $firstname.$lastname;
     }

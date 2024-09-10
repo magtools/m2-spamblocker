@@ -43,11 +43,11 @@ class AddressPostPlugin extends AbstractPlugin
         $telephone = $this->request->getParam('telephone', false);
         $city = $this->request->getParam('city', false);
         $address = $this->request->getParam('street', false);
-        $firstname = strtolower($firstname);
-        $lastname = strtolower($lastname);
-        $telephone = strtolower($telephone);
-        $city = strtolower($city);
-        $address = strtolower($address[0]);
+        $firstname = strtolower(!empty($firstname)?$firstname:'');
+        $lastname = strtolower(!empty($lastname)?$lastname:'');
+        $telephone = strtolower(!empty($telephone)?$telephone:'');
+        $city = strtolower(!empty($city)?$city:'');
+        $address = strtolower(!empty($address[0])?$address[0]:'');
 
         return $firstname.$lastname.$telephone.$city.$address;
     }
