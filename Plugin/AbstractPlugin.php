@@ -95,7 +95,8 @@ class AbstractPlugin
 
         foreach ($bannedList as $bannedString) {
             if (!empty($bannedString)) {
-                $bannedString = strtolower($bannedString);
+                //$bannedString = strtolower($bannedString); fix for carriage return
+                $bannedString = strtolower(str_replace("\r", '',$bannedString));
                 if (strpos($toValidateString, $bannedString) !== false) {
                     return true;
                 }

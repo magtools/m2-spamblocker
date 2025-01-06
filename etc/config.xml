@@ -19,8 +19,9 @@ $
 {
 }
 this.
-base64_decode
-base64]]></banned_list>
+base64
+money
+blogspot]]></banned_list>
             </general>
         </spam_blocker>
     </default>
